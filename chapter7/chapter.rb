@@ -14,6 +14,10 @@ class Document
   def word_count
     words.size
   end
+  
+  def private_word_count
+    words.size
+  end
 
   def about_me
     puts "I am #{self}"
@@ -23,6 +27,9 @@ class Document
     # word_count will do the same.
     puts "I have #{word_count} words"
   end
+
+  # this is another way declaring private methods
+  private :private_word_count
 end
 
 puts 'Ruby classes act as containers of methods'
@@ -54,3 +61,25 @@ you dig into the internals of an object
 EOF
 
 pp doc.instance_variables
+
+
+puts <<EOF
+There are two important things about private and protected
+Both are not used so frequently. And the second thig is
+that you can still call private and protected methods by
+calling send method
+EOF
+
+private_sample = "puts(doc.send( :private_word_count ))"
+puts private_sample
+eval( private_sample )
+
+
+puts <<EOF
+In Ruby, methods and method calls are the fundamental instrastructure
+of the language. In the lowest layer of the basic infrastructure
+of Ruby, a surprising number of things to be part of the language
+are just calls to methods: private, require, attr_accessor, etc
+are samples of importat parts of the language that are just call
+to methods.
+EOF
