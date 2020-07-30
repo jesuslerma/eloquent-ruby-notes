@@ -159,3 +159,41 @@ that used the old related versions of Document and LazyDocument will
 still work with the new unrelated classes. After all, both
 classes support the same set of  methods.
 EOF
+
+
+class Title
+  attr_reader :long_name, :short_name
+  attr_reader :isbn
+
+  def initialize(long_name, short_name, isbn)
+    @long_name = long_name
+    @short_name = short_name
+    @isbn = isbn
+  end
+end
+
+class Author
+  attr_reader :first_name, :last_name
+
+  def initialize( first_name, last_name ) 
+    @first_name = first_name
+    @last_name = last_name
+  end
+end
+
+puts <<EOF
+Imagine that you need to expect title and author params from
+Document class to be an instance of Title and Author, instead of
+strings. So you need to do NOTHING in Document in order to
+receive those new values
+EOF
+
+two_cities = Title.new( 'A Tale of Two Cities', '2 Cities',
+                        '0-999-9999-9' )
+dicknes = Author.new( 'Charles', 'Dicknes' )
+doc = Document.new( two_cities, dicknes, 'It was the best..' )
+
+puts <<EOF
+As a note: Never Use some sort of type validation. Any type of pseudo-statyc
+type checking combines all the disadvantages of the two camps.
+EOF
