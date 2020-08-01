@@ -17,4 +17,10 @@ class DocumentTest < Test::Unit::TestCase
     assert doc.words.include?( 'of' )
     assert doc.words.include?( 'words' )
   end
+
+  def test_that_word_count_is_correct
+    text = 'A bunch of words'
+    doc = Document.new('test', 'nobody', text)
+    assert_equal 4, doc.word_count, 'Word count is correct'
+  end
 end
