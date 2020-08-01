@@ -197,3 +197,13 @@ puts <<EOF
 As a note: Never Use some sort of type validation. Any type of pseudo-statyc
 type checking combines all the disadvantages of the two camps.
 EOF
+
+puts <<EOF
+The best way to avoid mixing your types, like metaphors, is to write the
+clearest, most concise code youcan, which explains why Ruby programmers
+place such a high premium on clear and consie code.
+
+The Ruby answer to bugs (type-related and non-type-related) is to write
+automated tests, lots and lots of automated tests.
+EOF
+EOF
