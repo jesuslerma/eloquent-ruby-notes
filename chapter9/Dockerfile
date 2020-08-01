@@ -7,4 +7,4 @@ RUN bundle install
 COPY . .
 CMD ["./chapter.rb"]
 CMD ["./document_test.rb"]
-CMD ["rspec", "document_spec.rb"]
+CMD ["rspec", "document_spec.rb", "printable_document_spec.rb"]
