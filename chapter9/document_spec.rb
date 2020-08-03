@@ -20,4 +20,5 @@ describe Document do
   it 'should know how many words it contains' do
     @doc.word_count.should == 4
   end
+
 end
