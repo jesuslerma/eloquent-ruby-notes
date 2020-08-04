@@ -9,13 +9,21 @@ class TextCompressor
 
     words = text.split
     words.each do |word|
-      i = @unique.index( word )
+      i = unique_index_of( word )
       if i
         @index << i
       else
-        @unique << word
-        @index << unique.size - 1
+        @index << add_unique_word( word )
       end
     end
+  end
+
+  def unique_index_of( word )
+    @unique.index(word)
+  end
+
+  def add_unique_word( word )
+    @unique << word
+    unique.size - 1
   end
 end
