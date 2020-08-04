@@ -20,4 +20,11 @@ describe PrintableDocument do
     stub_printer.stub(:render) { nil }
     expect(@doc.print( stub_printer )).to eq'Printer unavailable'
   end
+
+  it 'should know how to print itself' do
+    mock_printer = instance_double('Printer')
+    mock_printer.should_receive(:available?).and_return(true)
+    mock_printer.should_receive(:render).exactly(3).times
+    @doc.print( mock_printer ).should == 'Done'
+  end
 end
