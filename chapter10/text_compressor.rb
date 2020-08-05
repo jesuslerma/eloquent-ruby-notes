@@ -6,16 +6,17 @@ class TextCompressor
   def initialize( text )
     @unique = []
     @index = []
+    add_text( text )
+  end
 
+  def add_text( text )
     words = text.split
-    words.each do |word|
-      i = unique_index_of( word )
-      if i
-        @index << i
-      else
-        @index << add_unique_word( word )
-      end
-    end
+    words.each { |word| add_word( word ) }
+  end
+
+  def add_word( word )
+    i = unique_index_of( word ) || add_unique_word( word )
+    @index << i
   end
 
   def unique_index_of( word )
