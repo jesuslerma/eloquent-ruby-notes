@@ -14,5 +14,38 @@ class Document
   def word_count
     words.size
   end
+
+  def prose_rating
+    return :really_pretentious if really_pretentious?
+    return :somewhat_pretentious if somewhat_pretentious?
+    return :really_informal if really_informal?
+    return :somewhat_informal if somewhat_informal?
+  end
+
+  def really_pretentious?
+    pretentious_density > 0.3 && informal_density < 0.2
+  end
+
+  def somewhat_pretentious?
+    pretentious_density > 0.3 && informal_density >= 0.2
+  end
+
+  def really_informal?
+    pretentious_density < 0.1 && informal_density > 0.3
+  end
+
+  def somewhat_informal?
+    pretentious_density < 0.1 && informal_density <= 0.3
+  end
+
+  def pretentious_density
+    # fake this method
+    0.4
+  end
+
+  def informal_density
+    # fake this method
+    0.3
+  end
 end
 
