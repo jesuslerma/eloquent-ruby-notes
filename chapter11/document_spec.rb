@@ -26,4 +26,9 @@ describe Document do
     total_document = @doc + doc2
     total_document.content.should == 'A bunch of words of the star ship'
   end
+
+  it 'should negate the content of a Document' do
+    total_document = !@doc
+    total_document.content.should == 'It is not true: A bunch of words'
+  end
 end

@@ -51,5 +51,9 @@ class Document
   def +(other)
     Document.new( title, author, "#{content} #{other.content}" )
   end
+
+  def !
+    Document.new( title, author, "It is not true: #{content}" )
+  end
 end
 
