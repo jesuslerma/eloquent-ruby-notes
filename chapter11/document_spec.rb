@@ -31,4 +31,8 @@ describe Document do
     total_document = !@doc
     total_document.content.should == 'It is not true: A bunch of words'
   end
+
+  it 'should get the word at specific index' do
+    @doc[1].should == 'bunch'
+  end
 end

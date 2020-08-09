@@ -55,5 +55,9 @@ class Document
   def !
     Document.new( title, author, "It is not true: #{content}" )
   end
+
+  def [](index)
+    words[index]
+  end
 end
 
