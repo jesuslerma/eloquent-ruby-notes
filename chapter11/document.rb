@@ -59,5 +59,9 @@ class Document
   def [](index)
     words[index]
   end
+
+  def size()
+    words.size
+  end
 end
 

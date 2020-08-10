@@ -35,4 +35,8 @@ describe Document do
   it 'should get the word at specific index' do
     @doc[1].should == 'bunch'
   end
+
+  it 'should get the size of words' do
+    @doc.size.should == 4
+  end
 end
