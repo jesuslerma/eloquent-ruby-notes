@@ -8,6 +8,7 @@ class DocumentIdentifier
 
   def ==(other)
     return false unless other.instance_of?(self.class)
+
     folder == other.folder && name == other.name
   end
 end
