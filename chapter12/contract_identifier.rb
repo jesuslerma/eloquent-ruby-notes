@@ -1,0 +1,2 @@
+class ContractIdentifier < DocumentIdentifier
+end
