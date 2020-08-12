@@ -16,7 +16,7 @@ describe DocumentIdentifier do
     (@doc_id == doc_id2).should == true
   end
 
-  it 'shpuld return false when are validating different instance class' do
+  it 'should return false when are validating different instance class' do
     some_str = 'String'
     (@doc == some_str).should == false
   end
