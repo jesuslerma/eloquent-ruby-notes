@@ -1,6 +1,3 @@
 #!/usr/bin/env ruby
-puts 'Define Operators Respectfully!'
-
-puts <<EOF
-EOF
+puts 'Create Classes that understand Equality'
 
