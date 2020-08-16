@@ -7,12 +7,13 @@ class VersionedIdentifier < DocumentIdentifier
   end
 
   def ==(other)
-    if other.instance_of? VersionedIdentifier
-      other.folder == folder &&
+    return false unless other.instance_of? VersionedIdentifier
+    return other.folder == folder &&
       other.name == name &&
       other.version == version
-    elsif other.instance_of? DocumentIdentifier
+  end
+  # we are creating this method because == is not transitive
+  def is_same_document?(other)
       other.folder == folder && other.name == name
-    end
   end
 end

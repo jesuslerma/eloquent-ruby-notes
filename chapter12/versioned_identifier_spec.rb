@@ -10,15 +10,15 @@ describe VersionedIdentifier do
     @unversioned = DocumentIdentifier.new( 'specs', 'bf9k' )
   end
 
-  it 'should return true' do
-    (@unversioned == @versioned_one).should == true
-  end
-
-  it 'should return true' do
-    (@unversioned == @versioned_two).should == true
+  it 'should return false' do
+    (@versioned_one == @unversioned).should == false
   end
 
   it 'should return true' do
     (@versioned_one == @versioned_two).should == false
+  end
+
+  it 'should return true' do
+    @versioned_one.is_same_document?( @unversioned ).should == true
   end
 end
