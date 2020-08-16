@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require './document_identifier.rb'
+require './document.rb'
 require './contract_identifier.rb'
 
 describe DocumentIdentifier do
@@ -19,5 +20,14 @@ describe DocumentIdentifier do
   it 'should return false when are validating different instance class' do
     some_str = 'String'
     (@doc == some_str).should == false
+  end
+
+  it 'should work well with hash' do
+    hash = {}
+    document = Document.new( 'cia', 'Roswell', 'story' )
+    first_id = DocumentIdentifier.new( 'public', 'CoverStory' )
+    second_id = DocumentIdentifier.new( 'public', 'CoverStory' )
+    hash[first_id] = document
+    hash[second_id].should == document
   end
 end
