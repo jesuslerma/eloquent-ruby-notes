@@ -6,4 +6,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . .
 CMD ["./chapter.rb"]
-CMD ["rspec", "./document_identifier_spec.rb", "./document_pointer_spec.rb"]
+CMD ["rspec", "./document_identifier_spec.rb", "./document_pointer_spec.rb", "./versioned_identifier_spec.rb"]
