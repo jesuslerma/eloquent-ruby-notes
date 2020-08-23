@@ -1,4 +1,7 @@
+require './finders.rb'
+
 class Document 
+  extend Finders
   attr_accessor :title, :author, :content
 
   def initialize( title, author, content )
