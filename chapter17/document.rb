@@ -14,6 +14,10 @@ class Document
     @content.split
   end
 
+  def each_word
+    words.each { |word| yield(word) }
+  end
+
   def word_count
     words.size
   end
