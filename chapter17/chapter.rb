@@ -12,7 +12,7 @@ end
 
 
 d = Document.new( 'Truth', 'Gump', 'Life is like a box of ...' )
-d.each_word {|word| puts word}
+puts d.each {|word| puts word}.include? 'Life'
 
 12.times { |x| puts "The number is #{x}" }
 

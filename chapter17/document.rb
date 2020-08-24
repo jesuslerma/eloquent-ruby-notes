@@ -1,7 +1,7 @@
 require './finders.rb'
 
 class Document 
-  extend Finders
+  include Enumerable
   attr_accessor :title, :author, :content
 
   def initialize( title, author, content )
@@ -14,17 +14,12 @@ class Document
     @content.split
   end
 
-  def each_word
+  def each
     words.each { |word| yield(word) }
   end
 
   def each_word_pair
-    word_array = words
-    index = 0
-    while index < (word_array.size-1)
-      yield word_array[index], word_array[index+1]
-      index += 1
-    end
+    words.each_cons(2) {|array| yield array[0], array[1]}
   end
 
   def word_count
