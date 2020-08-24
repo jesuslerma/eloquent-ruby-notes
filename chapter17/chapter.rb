@@ -14,3 +14,8 @@ end
 d = Document.new( 'Truth', 'Gump', 'Life is like a box of ...' )
 d.each_word {|word| puts word}
 
+12.times { |x| puts "The number is #{x}" }
+
+doc = Document.new( 'Donuts', '?', 'I love donuts mmm donuts' )
+doc.each_word_pair {|first, second| puts "#{first} #{second}" }
+

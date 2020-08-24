@@ -18,6 +18,15 @@ class Document
     words.each { |word| yield(word) }
   end
 
+  def each_word_pair
+    word_array = words
+    index = 0
+    while index < (word_array.size-1)
+      yield word_array[index], word_array[index+1]
+      index += 1
+    end
+  end
+
   def word_count
     words.size
   end
