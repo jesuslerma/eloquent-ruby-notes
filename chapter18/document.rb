@@ -4,10 +4,17 @@ class Document
   include Enumerable
   attr_accessor :title, :author, :content
 
-  def initialize( title, author, content )
+  def initialize( title, author, content = '')
     @title = title
     @author = author
     @content = content
+    yield( self ) if block_given?
+  end
+  # TODO
+  def self.load
+  end
+  # TODO
+  def save
   end
 
   def words
