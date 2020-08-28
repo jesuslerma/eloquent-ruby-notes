@@ -3,6 +3,8 @@ require './finders.rb'
 class Document 
   include Enumerable
   attr_accessor :title, :author, :content
+  attr_accessor :load_listener
+  attr_accessor :save_listener
 
   def initialize( title, author, content = '')
     @title = title
@@ -13,8 +15,23 @@ class Document
   # TODO
   def self.load
   end
-  # TODO
-  def save
+
+  def load( path )
+    @content = File.read( path )
+    @load_listener.call( self, path ) if @load_listener
+  end
+
+  def save( path )
+    File.open( path, 'w' ) { |f| f.print( @content ) }
+    @save_listener.call( self, path ) if @save_listener
+  end
+
+  def on_save( &block )
+    @save_listener = block
+  end
+
+  def on_load( &block )
+    @load_listener = block
   end
 
   def words
