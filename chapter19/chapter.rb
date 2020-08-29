@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require './document.rb'
+require './block_based_archival_document.rb'
 puts 'Save blocks to execute later'
 
 def run_that_block( &that_block )
@@ -21,3 +22,12 @@ end
 my_doc.on_save do |doc|
   puts "Hey, I've been saved!"
 end
+
+my_doc.load('example.txt')
+my_doc.save('example.txt')
+
+file_doc = BlockBasedArchivalDocument.new( 'file', 'russ') do
+  File.read('some_text.txt')
+end
+
+puts file_doc.content

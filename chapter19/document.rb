@@ -1,5 +1,3 @@
-require './finders.rb'
-
 class Document 
   include Enumerable
   attr_accessor :title, :author, :content
