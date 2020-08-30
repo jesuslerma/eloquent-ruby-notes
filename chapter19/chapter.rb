@@ -17,13 +17,13 @@ end
 
 my_doc = Document.new( 'Block Based Example', 'russ', '' )
 
-my_doc.on_load do |doc|
-  puts "Hey, I've been loaded!"
-end
+#my_doc.on_load do |doc|
+#  puts "Hey, I've been loaded!"
+#end
 
-my_doc.on_save do |doc|
-  puts "Hey, I've been saved!"
-end
+#my_doc.on_save do |doc|
+#  puts "Hey, I've been saved!"
+#end
 
 my_doc.load('example.txt')
 my_doc.save('example.txt')

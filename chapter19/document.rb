@@ -1,5 +1,14 @@
-class Document 
+class Document
   include Enumerable
+
+  DEFAULT_LOAD_LISTENER = lambda do |doc, path|
+    puts "Loaded: #{path}"
+  end
+
+  DEFAULT_SAVE_LISTENER = lambda do |doc, path|
+    puts "Saved: #{path}"
+  end
+
   attr_accessor :title, :author, :content
   attr_accessor :load_listener
   attr_accessor :save_listener
@@ -8,6 +17,8 @@ class Document
     @title = title
     @author = author
     @content = content
+    @save_listener = DEFAULT_SAVE_LISTENER
+    @load_listener = DEFAULT_LOAD_LISTENER
     yield( self ) if block_given?
   end
   # TODO
