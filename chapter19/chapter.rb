@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require './document.rb'
 require './block_based_archival_document.rb'
+require 'net/http'
+
 puts 'Save blocks to execute later'
 
 def run_that_block( &that_block )
@@ -26,8 +28,13 @@ end
 my_doc.load('example.txt')
 my_doc.save('example.txt')
 
-file_doc = BlockBasedArchivalDocument.new( 'file', 'russ') do
-  File.read('some_text.txt')
+# this is a simple example of how can we work.
+# file_doc = BlockBasedArchivalDocument.new( 'file', 'russ') do
+#   File.read('some_text.txt')
+# end
+
+google_doc = BlockBasedArchivalDocument.new('http', 'russ') do
+  Net::HTTP.get_response('www.google.com', 'index.html').body
 end
 
-puts file_doc.content
+puts google_doc.content
