@@ -28,6 +28,14 @@ class Document
   def self.load
   end
 
+  def self.const_missing( const_name )
+    msg = %Q{
+      You tried to call the constant #{const_name}
+      There is not such constant in this class
+    }
+    raise msg
+  end
+
   def method_missing( missing, *args )
     candidates = methods_that_sounds_like( missing.to_s )
     message = "You called an undefined method: #{missing}"
