@@ -11,3 +11,12 @@ end
 original_instructions = get_instructions
 
 instructions = SuperSecretDocument.new(original_instructions, 5)
+
+string = 'Good morning, Mr Chuy'
+super_secret = SuperSecretDocument.new(string, 5)
+puts super_secret.length
+
+sleep 6
+
+puts super_secret.length
+
