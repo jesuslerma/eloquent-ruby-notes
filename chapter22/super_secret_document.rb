@@ -1,4 +1,6 @@
 class SuperSecretDocument
+  DELEGATED_METHODS = [ :content, :words ]
+
   def initialize( original_document, time_limit_seconds )
     @original_document = original_document
     @time_limit_seconds = time_limit_seconds
@@ -15,6 +17,10 @@ class SuperSecretDocument
 
   def method_missing(name, *args)
     check_for_expiration
-    @original_document.send(name, *args)
+    if DELEGATED_METHODS.include?( name )
+      @original_document.send(name, *args)
+    else
+      super
+    end
   end
 end
