@@ -21,3 +21,22 @@ end
 
 empty_doc = Document.new( 'Empty!', 'No Author', '' )
 puts empty_doc.average_word_length
+
+puts "We're reopening string class to sum string + document"
+
+class String
+  def +( other )
+    if other.kind_of? Document
+      new_content = self + other.content
+      return Document.new(other.title, other.author, new_content)
+    end
+    result = self.dup
+    result << other.to_str
+    result
+  end
+end
+
+string_hello = "Hello My name is Chuy"
+
+new_document =string_hello + cover_letter
+puts new_document.content
