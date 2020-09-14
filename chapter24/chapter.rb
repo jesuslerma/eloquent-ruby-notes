@@ -25,14 +25,14 @@ puts empty_doc.average_word_length
 puts "We're reopening string class to sum string + document"
 
 class String
+  alias_method :old_addition, :+
+
   def +( other )
     if other.kind_of? Document
       new_content = self + other.content
       return Document.new(other.title, other.author, new_content)
     end
-    result = self.dup
-    result << other.to_str
-    result
+    old_addition(other)
   end
 end
 
