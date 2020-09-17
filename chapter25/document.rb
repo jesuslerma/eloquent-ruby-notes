@@ -28,6 +28,21 @@ class Document
   def self.load
   end
 
+  def self.reload
+    load( __FILE__)
+  end
+
+  # This code is an real sample of self-modifying classes
+  if RUBY_VERSION >= '1.9'
+    def char_at( index )
+      @content[ index ]
+    end
+  else
+    def char_at( index )
+      @content[ index ].chr
+    end
+  end
+
   def average_word_length
     len = words.inject(0.0){ |total, word| word.size + total }
     len / words.size
