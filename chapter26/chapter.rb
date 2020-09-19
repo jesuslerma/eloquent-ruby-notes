@@ -4,6 +4,7 @@ require('./paragraph.rb')
 require('./structured_document.rb')
 require('./resume.rb')
 require('./instructions.rb')
+require('./bank_statement.rb')
 
 puts 'Create classes that modify their subclasses'
 
@@ -23,3 +24,7 @@ instructions = Instructions.new('Instrucciones', 'Instrucciones de Uso') do |int
 end
 
 puts instructions.paragraphs.map{ |p| p.text }
+
+statement = BankStatement.new( 'Bank Statement', 'Chuy' )
+statement.bad_news("You're broke!")
+puts statement.content
