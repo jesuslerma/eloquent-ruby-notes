@@ -16,17 +16,18 @@ class StructuredDocument
     @paragraphs.inject('') { |text, para| "#{text}\n#{para}" }
   end
 
+  def self.privatize
+    private :content
+  end
+
   def self.paragraph_type( paragraph_name, options )
     name = options[:font_name] || :arial
     size = options[:font_size] || 12
     emphasis = options[:font_emphasis] || :normal
 
-    code = %Q{
-      def #{paragraph_name}(text)
-        p = Paragraph.new(:#{name}, #{size}, :#{emphasis}, text)
-        self << p
-      end
-    }
-    class_eval( code )
+    define_method(paragraph_name) do |text|
+      paragraph = Paragraph.new( name, size, emphasis, text )
+      self << paragraph
+    end
   end
 end
