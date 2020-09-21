@@ -24,6 +24,14 @@ class XmlRipper
     @after_action = block
   end
 
+  def method_missing( name, *args, &block )
+    return super unless name.to_s =~ /on_.*/
+    parts = name.to_s.split( '_' )
+    parts.shift
+    xpath = parts.join( '/' )
+    on_path( xpath, &block )
+  end
+
   def run( xml_file_path )
     File.open( xml_file_path ) do |f|
       document = REXML::Document.new(f)
