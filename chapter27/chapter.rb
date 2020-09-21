@@ -20,3 +20,7 @@ end
 
 mripper.run( 'fellowship.xml' )
 
+
+rile_ripper = XmlRipper.new
+ripper.initialize_from_file( 'fix_author.ripper' )
+ripper.run( 'fellowship.xml' )
