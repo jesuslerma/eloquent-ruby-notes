@@ -5,7 +5,7 @@ class XmlRipper
     @before_action = proc {}
     @path_actions = {}
     @after_action = proc {}
-    block.call( self ) if block
+    instance_eval( &block) if block
   end
 
   def on_path( path, &block )
