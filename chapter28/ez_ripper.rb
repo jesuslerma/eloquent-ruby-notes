@@ -17,18 +17,18 @@ class EzRipper
   end
 
   def parse_statement( statement )
-    tokens = statement.strip.split
-    return if tokens.empty?
-
-    case tokens.first
-    when 'print'
-      @ripper.on_path( tokens[1] ) do |el|
+    # replace comments
+    statement = statement.sub(/#.*/, '')
+    case statement.strip
+    when ''
+    when /print\s+'(.*?)'/
+      @ripper.on_path( $1 ) do |el|
         puts el.text
       end
-    when 'delete'
-      @ripper.on_path( tokens[1] ) { |el| el.remove }
-    when 'replace'
-      @ripper.on_path( tokens[1]) { |el| el.text = tokens[2] }
+    when /delete\s+'s(.*?)'/
+      @ripper.on_path( $1 ) { |el| el.remove }
+    when /replace\s+'s(.*?)'\s+'(.*?)'$/
+      @ripper.on_path( $1 ) { |el| el.text = tokens[2] }
     when 'print_document'
       @ripper.after do |doc|
         puts doc
